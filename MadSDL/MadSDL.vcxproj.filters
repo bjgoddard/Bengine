@@ -90,6 +90,15 @@
     <ClCompile Include="CollisionHandler.cpp">
       <Filter>Collision</Filter>
     </ClCompile>
+    <ClCompile Include="SeqAnimation.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteAnimation.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Characters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -157,6 +166,15 @@
     </ClInclude>
     <ClInclude Include="Collider.h">
       <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="SeqAnimation.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteAnimation.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Characters</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

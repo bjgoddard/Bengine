@@ -1,8 +1,8 @@
 #pragma once
 #include "Character.h"
-#include "Animation.h"
 #include "RigidBody.h"
 #include "Collider.h"
+#include "SpriteAnimation.h"
 
 #define JUMP_TIME 15.0f
 #define JUMP_FORCE 10.0f
@@ -34,7 +34,7 @@ private:
 	float m_JumpTime;
 	float m_JumpForce;
 
-	Animation* m_Animation;
+	SpriteAnimation* m_Animation;
 	RigidBody* m_RigidBody;
 	Collider* m_Collider;
 	Vec2 m_LastSafePosition;

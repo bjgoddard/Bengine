@@ -17,7 +17,7 @@ Warrior::Warrior(Properties* props) : Character(props)
 	m_RigidBody = new RigidBody();
 	m_RigidBody->SetGravity(3.0f);
 
-	m_Animation = new Animation();
+	m_Animation = new SpriteAnimation();
 	m_Animation->SetProps("player_idle", 0, 6, 100);
 }
 
@@ -138,7 +138,7 @@ void Warrior::Update(float dt)
 	m_Origin->Y = m_Transform->Y + m_Height / 2;
 
 	AnimationState();
-	m_Animation->Update();
+	m_Animation->Update(dt);
 }
 
 void Warrior::AnimationState()

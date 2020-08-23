@@ -6,11 +6,12 @@
 #include "Timer.h"
 #include "MapParser.h"
 #include "Camera.h"
+#include "Enemy.h"
 
 Engine* Engine::s_instance = nullptr;
 TextureManager* TextureManager::s_Instance = nullptr;
 //SDL_Renderer* renderer = nullptr;
-Warrior* player;
+//Warrior* player;
 
 bool Engine::Init()
 {
@@ -54,10 +55,14 @@ bool Engine::Init()
     //TextureManager::get().Load("player_crouch", "assets/Crouch.png");
     //TextureManager::get().Load("player_attack", "assets/Attack.png");
 
-    TextureManager::get().Load("bg", "assets/forestbg.jpg");
+    //TextureManager::get().Load("bg", "assets/forestbg.jpg");
    
 
-    player = new Warrior(new Properties("player", 100, 200, 136, 96));
+    Warrior* player = new Warrior(new Properties("player", 100, 200, 136, 96));
+    Enemy* boss = new Enemy(new Properties("boss_idle", 820, 240, 460, 352));
+
+    m_GameObjects.push_back(player);
+    m_GameObjects.push_back(boss);
 
     Camera::get().SetTarget(player->GetOrigin());
 
@@ -68,7 +73,10 @@ bool Engine::Init()
 void Engine::Update()
 {
     float dt = Timer::get()->GetDeltaTime();
-    player->Update(dt);
+    /*player->Update(dt);*/
+    for (unsigned int i = 0; i != m_GameObjects.size(); i++) {
+        m_GameObjects[i]->Update(dt);
+    }
     m_LevelMap->Update();
     Camera::get().Update(dt);
 }
@@ -78,11 +86,14 @@ void Engine::Render()
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
 
-    TextureManager::get().Draw("bg", 0, 0, 1380, 1020, 0.4f);
+    //TextureManager::get().Draw("bg", 0, 0, 1380, 1020, 0.4f);
     m_LevelMap->Render();
     //TextureManager::GetInstance()->Draw("foo", 0, 0, 64, 128);
  /*   TextureManager::GetInstance()->Draw("player", 0, 0, 64, 128);*/
-    player->Draw();
+    //player->Draw();
+    for (unsigned int i = 0; i != m_GameObjects.size(); i++) {
+        m_GameObjects[i]->Draw();
+    }
 
     SDL_RenderPresent(renderer);
 }
@@ -94,6 +105,9 @@ void Engine::Events()
 
 void Engine::Clean()
 {
+    for (unsigned int i = 0; i != m_GameObjects.size(); i++) {
+        m_GameObjects[i]->Clean();
+    }
     TextureManager::get().Clean();
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(m_Window);

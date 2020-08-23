@@ -3,6 +3,8 @@
 #include <SDL_image.h>
 #include "TextureManager.h"
 #include "GameMap.h"
+#include "GameObject.h"
+#include <vector>
 
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
@@ -38,4 +40,6 @@ private:
 	SDL_Renderer* renderer;
 	SDL_Window* m_Window;
 	static Engine* s_instance;
+
+	std::vector<GameObject*> m_GameObjects;
 };
