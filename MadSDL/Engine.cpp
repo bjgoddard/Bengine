@@ -7,6 +7,7 @@
 #include "MapParser.h"
 #include "Camera.h"
 #include "Enemy.h"
+#include "ObjectFactory.h"
 
 Engine* Engine::s_instance = nullptr;
 TextureManager* TextureManager::s_Instance = nullptr;
@@ -45,21 +46,17 @@ bool Engine::Init()
     m_LevelMap = MapParser::get()->GetMap("level1");
 
     TextureManager::get().ParseTextures("assets/textures.tml");
-    //TextureManager::GetInstance()->Load("foo", "assets/foo.png");
-    //TextureManager::GetInstance()->Load("player", "assets/Idle 1.png");
-    ////TextureManager::GetInstance()->Load("player_run", "assets/walk 1.png");
-    //TextureManager::get().Load("player_idle", "assets/Idle.png");
-    //TextureManager::get().Load("player_run", "assets/Run.png");
-    //TextureManager::get().Load("player_jump", "assets/Jump.png");
-    //TextureManager::get().Load("player_fall", "assets/Fall.png");
-    //TextureManager::get().Load("player_crouch", "assets/Crouch.png");
-    //TextureManager::get().Load("player_attack", "assets/Attack.png");
-
-    //TextureManager::get().Load("bg", "assets/forestbg.jpg");
+    TextureManager::get().Load("bg", "assets/forestbg.jpg");
    
 
-    Warrior* player = new Warrior(new Properties("player", 100, 200, 136, 96));
+    //Warrior* player = new Warrior(new Properties("player", 100, 200, 136, 96));
+    Properties* props = new Properties("player_idle", 100, 200, 136, 96);
+
+    GameObject* player = ObjectFactory::get().CreateObject("PLAYER", props);
+
     Enemy* boss = new Enemy(new Properties("boss_idle", 820, 240, 460, 352));
+
+
 
     m_GameObjects.push_back(player);
     m_GameObjects.push_back(boss);
@@ -86,7 +83,7 @@ void Engine::Render()
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
 
-    //TextureManager::get().Draw("bg", 0, 0, 1380, 1020, 0.4f);
+    TextureManager::get().Draw("bg", 0, 0, 1380, 1020, 1.0f, 1.0f, 0.4f);
     m_LevelMap->Render();
     //TextureManager::GetInstance()->Draw("foo", 0, 0, 64, 128);
  /*   TextureManager::GetInstance()->Draw("player", 0, 0, 64, 128);*/

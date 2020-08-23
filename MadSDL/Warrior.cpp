@@ -3,7 +3,10 @@
 #include <SDL.h>
 #include "Input.h"
 #include "Camera.h"
+#include "ObjectFactory.h"
 #include "CollisionHandler.h"
+
+static Registrar<Warrior> registrar("PLAYER");
 
 Warrior::Warrior(Properties* props) : Character(props)
 {
@@ -28,7 +31,7 @@ void Warrior::Draw()
 	//m_Transform->TranslateX(m_RigidBody->Position().X);
 	//m_Transform->TranslateY(m_RigidBody->Position().Y);
 	m_Animation->Draw(m_Transform->X, m_Transform->Y, m_Width, m_Height, m_Flip);
-
+	m_Collider->Draw();
 	//Vec2 cam = Camera::get().GetPosition();
 	//SDL_Rect box = m_Collider->Get();
 	//box.x -= cam.X;

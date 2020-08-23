@@ -43,6 +43,9 @@
     <Filter Include="Collision">
       <UniqueIdentifier>{ae2d9f31-bd96-44b4-b4e3-258389882d7d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Factory">
+      <UniqueIdentifier>{89bcf05d-1f98-43ed-9112-0e952330b3cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -98,6 +101,9 @@
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectFactory.cpp">
+      <Filter>Factory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +181,9 @@
     </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectFactory.h">
+      <Filter>Factory</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

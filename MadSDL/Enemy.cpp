@@ -1,7 +1,10 @@
 #include "Enemy.h"
 #include "Camera.h"
 #include "CollisionHandler.h"
+#include "ObjectFactory.h"
 #include <iostream>
+
+static Registrar<Enemy> registrar("BOSS");
 
 Enemy::Enemy(Properties* props) : Character(props)
 {
@@ -17,6 +20,7 @@ Enemy::Enemy(Properties* props) : Character(props)
 void Enemy::Draw()
 {
 	m_Animation->DrawFrame(m_Transform->X, m_Transform->Y, 0.3f, 0.3f, m_Flip);
+	m_Collider->Draw();
 }
 
 void Enemy::Update(float dt)
