@@ -43,30 +43,24 @@ bool Engine::Init()
     //MAD MAP WORKING
     m_LevelMap = MapParser::get()->GetMap("level1");
 
+    TextureManager::get().ParseTextures("assets/textures.tml");
     //TextureManager::GetInstance()->Load("foo", "assets/foo.png");
     //TextureManager::GetInstance()->Load("player", "assets/Idle 1.png");
-    //TextureManager::GetInstance()->Load("player_run", "assets/walk 1.png");
-    TextureManager::get().Load("player_idle", "assets/Idle.png");
-    TextureManager::get().Load("player_run", "assets/Run.png");
-    TextureManager::get().Load("player_jump", "assets/Jump.png");
-    TextureManager::get().Load("player_fall", "assets/Fall.png");
-    TextureManager::get().Load("player_crouch", "assets/Crouch.png");
-    TextureManager::get().Load("player_attack", "assets/Attack.png");
+    ////TextureManager::GetInstance()->Load("player_run", "assets/walk 1.png");
+    //TextureManager::get().Load("player_idle", "assets/Idle.png");
+    //TextureManager::get().Load("player_run", "assets/Run.png");
+    //TextureManager::get().Load("player_jump", "assets/Jump.png");
+    //TextureManager::get().Load("player_fall", "assets/Fall.png");
+    //TextureManager::get().Load("player_crouch", "assets/Crouch.png");
+    //TextureManager::get().Load("player_attack", "assets/Attack.png");
 
     TextureManager::get().Load("bg", "assets/forestbg.jpg");
    
-    //idle 2 1860x838
-    //walk2  2260x762
+
     player = new Warrior(new Properties("player", 100, 200, 136, 96));
 
     Camera::get().SetTarget(player->GetOrigin());
-    //idle1 and walk 1
-    //player = new Warrior(new Properties("player", 0, 100, 283, 361 ));
-    /*player = new Warrior(new Properties("player_run", 0, 100, 556, 728));*/
 
-
-    //1415, 722
-    //2780, 1456
     return m_IsRunning = true;
 }
 
@@ -84,7 +78,7 @@ void Engine::Render()
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
 
-    TextureManager::get().Draw("bg", 0, 0, 1380, 1020);
+    TextureManager::get().Draw("bg", 0, 0, 1380, 1020, 0.4f);
     m_LevelMap->Render();
     //TextureManager::GetInstance()->Draw("foo", 0, 0, 64, 128);
  /*   TextureManager::GetInstance()->Draw("player", 0, 0, 64, 128);*/
