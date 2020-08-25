@@ -5,16 +5,34 @@
 
 SeqAnimation::SeqAnimation(bool repeat) : Animation(repeat) {}
 
+void SeqAnimation::DrawFrame(float x, float y, float xScale, float yScale, float scrollRatio, SDL_RendererFlip flip)
+{
+	TextureManager::get().Draw(m_CurrentSeq.TextureIDs[m_CurrentFrame], x, y, m_CurrentSeq.Width, m_CurrentSeq.Height, xScale, yScale, scrollRatio, flip);
+}
+
+
 void SeqAnimation::Update(float dt)
 {
 	if (m_Repeat || !m_IsEnded) {
 		m_IsEnded = false;
-		m_CurrentFrame = (SDL_GetTicks() / m_CurrentSeq.Speed) % m_CurrentSeq.FrameCount;
+		m_CurrentFrame = (SDL_GetTicks()/m_CurrentSeq.Speed) % m_CurrentSeq.FrameCount;
 	}
 
 	if (!m_Repeat && m_CurrentFrame == (m_CurrentSeq.FrameCount - 1)) {
 		m_IsEnded = true;
 		m_CurrentFrame = (m_CurrentSeq.FrameCount - 1);
+	}
+}
+
+void SeqAnimation::SetCurrentSeq(std::string seqID)
+{
+	if (m_SeqMap.count(seqID) > 0) {
+		m_CurrentSeq = m_SeqMap[seqID];
+		m_CurrentFrame = 1;
+		m_IsEnded = false;
+	}
+	else {
+		std::cout << "Sequence animation not matching" << seqID << std::endl;
 	}
 }
 
@@ -42,17 +60,3 @@ void SeqAnimation::Parse(std::string source)
 	}
 }
 
-void SeqAnimation::SetCurrentSeq(std::string seqID)
-{
-	if (m_SeqMap.count(seqID) > 0) {
-		m_CurrentSeq = m_SeqMap[seqID];
-	}
-	else {
-		std::cout << "Sequence animation not matching" << seqID << std::endl;
-	}
-}
-
-void SeqAnimation::DrawFrame(float x, float y, float xScale, float yScale, SDL_RendererFlip flip)
-{
-	TextureManager::get().Draw(m_CurrentSeq.TextureIDs[m_CurrentFrame], x, y, m_CurrentSeq.Width, m_CurrentSeq.Height, xScale, yScale, flip);
-}

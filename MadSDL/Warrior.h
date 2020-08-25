@@ -18,6 +18,7 @@ public:
 	virtual void Draw();
 	virtual void Clean();
 	virtual void Update(float dt);
+	Collider* GetCollider() { return m_Collider; }
 
 private:
 	void AnimationState();
@@ -38,4 +39,5 @@ private:
 	RigidBody* m_RigidBody;
 	Collider* m_Collider;
 	Vec2 m_LastSafePosition;
+	/*SDL_Rect* Enemy_Rect;*/
 };

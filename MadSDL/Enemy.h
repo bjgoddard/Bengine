@@ -13,6 +13,7 @@ public:
 	virtual void Draw();
 	virtual void Clean();
 	virtual void Update(float dt);
+	Collider* GetCollider() { return m_Collider; }
 
 private:
 	Collider* m_Collider;
