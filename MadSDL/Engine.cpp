@@ -8,6 +8,8 @@
 #include "Camera.h"
 #include "Enemy.h"
 #include "CollisionHandler.h"
+#include "CollisionSystem.h"
+#include "Viking.h"
 
 Engine* Engine::s_instance = nullptr;
 TextureManager* TextureManager::s_Instance = nullptr;
@@ -15,7 +17,8 @@ TextureManager* TextureManager::s_Instance = nullptr;
 
 //SDL_Renderer* renderer = nullptr;
 //Warrior* player;
-
+//Enemy* boss;
+CollisionSystem collisionSystem;
 
 
 
@@ -61,16 +64,33 @@ bool Engine::Init()
     //TextureManager::get().Load("player_crouch", "assets/Crouch.png");
     //TextureManager::get().Load("player_attack", "assets/Attack.png");
 
-    TextureManager::get().Load("bg", "assets/forestbg.jpg");
+ /*   TextureManager::get().Load("bg", "assets/forestbg.jpg");*/
   
 
-    Warrior* player = new Warrior(new Properties("player", 50, 200, 136, 96));
-    Enemy* boss = new Enemy(new Properties("boss_idle", 180, 370, 460, 352));
+    Warrior* player = new Warrior(new Properties("player", 500, 200, 136, 96));
+    //Enemy* boss = new Enemy(new Properties("boss", 180, 370, 460, 352));
+    Viking* viking = new Viking(new Properties("viking", 1200, 100, 128, 128));
+    if (viking) {
+        viking->player = player;
+    }
 
     m_GameObjects.push_back(player);
-    m_GameObjects.push_back(boss);
+    //m_GameObjects.push_back(boss);
+    m_GameObjects.push_back(viking);
 
+    collisionSystem.AddToCollisionList(player);
+    //collisionSystem.AddToCollisionList(boss);
+    collisionSystem.AddToCollisionList(viking);
 
+    //COLLISION VECTOR CHECKING
+    //for (auto i = collisionSystem.m_ObjectList.begin(); i != collisionSystem.m_ObjectList.end(); ++i) {
+    //    std::cout << *i << std::endl;
+    //}
+    //
+    //collisionSystem.RemoveFromCollisionList(boss);
+    //    for (auto i = collisionSystem.m_ObjectList.begin(); i != collisionSystem.m_ObjectList.end(); ++i) {
+    //    std::cout << *i << std::endl;
+    //}
 
 
     Camera::get().SetTarget(player->GetOrigin());
@@ -82,15 +102,13 @@ bool Engine::Init()
 void Engine::Update()
 {
     float dt = Timer::get()->GetDeltaTime();
-    /*player->Update(dt);*/
-    //for (unsigned int i = 0; i != m_GameObjects.size(); i++) {
-    //    m_GameObjects[i]->Update(dt);
-    //}
 
 
     for (auto& obj : m_GameObjects) {
         obj->Update(dt);
     }
+
+    collisionSystem.ProcessCollisionList();
 
 
     m_LevelMap->Update();
@@ -102,7 +120,7 @@ void Engine::Render()
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
 
-    TextureManager::get().Draw("bg", 0, 0, 1380, 1020, 1.0f, 1.0f, 0.4f);
+    TextureManager::get().Draw("bg", 0, -100, 2667, 1591, 0.75f, 0.75f, 0.4f);
     m_LevelMap->Render();
     //TextureManager::GetInstance()->Draw("foo", 0, 0, 64, 128);
  /*   TextureManager::GetInstance()->Draw("player", 0, 0, 64, 128);*/

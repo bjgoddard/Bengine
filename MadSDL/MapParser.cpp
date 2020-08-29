@@ -6,7 +6,8 @@ MapParser* MapParser::s_instance = nullptr;
 bool MapParser::Load()
 {
     //MAD MAP WORKING
-    if (!Parse("level1", "assets/Maps/map2.tmx"))
+    /*if (!Parse("level1", "assets/Maps/map2.tmx"))*/
+    if (!Parse("level1", "assets/Maps/Snow2.tmx"))
     //if(!Parse("level1", "assets/Maps/B_level1.tmx"))
     {
         return false;

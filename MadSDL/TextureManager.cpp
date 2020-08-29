@@ -55,7 +55,7 @@ void TextureManager::DrawFrame(std::string id, int x, int y, int width, int heig
 {
     Vec2 cam = Camera::get().GetPosition();
     SDL_Rect srcRect = { width * frame, height * row, width, height };
-    SDL_Rect destRect = {  x - cam.X, y - cam.Y, width, height };
+    SDL_Rect destRect = {  x - cam.X, y - cam.Y, width , height };
     SDL_RenderCopyEx(Engine::get().getRenderer(), m_TextureMap[id], &srcRect, &destRect, 0, nullptr, flip);
 }
 

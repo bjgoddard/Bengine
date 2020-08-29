@@ -7,9 +7,6 @@
 #include "Enemy.h"
 #include "Engine.h"
 
-//Enemy* boss = nullptr;
-
-
 Warrior::Warrior(Properties* props) : Character(props)
 {
 	m_JumpTime = JUMP_TIME;
@@ -25,7 +22,7 @@ Warrior::Warrior(Properties* props) : Character(props)
 	m_Animation = new SpriteAnimation();
 	m_Animation->SetProps("player_idle", 0, 6, 100);
 
-	
+	m_Name = "player";
 
 	
 }
@@ -36,7 +33,7 @@ void Warrior::Draw()
 	//m_RigidBody->ApplyForceX(3); 
 	//m_Transform->TranslateX(m_RigidBody->Position().X);
 	//m_Transform->TranslateY(m_RigidBody->Position().Y);
-	m_Animation->Draw(m_Transform->X, m_Transform->Y, m_Width, m_Height, m_Flip);
+	m_Animation->Draw(m_Transform->X, m_Transform->Y, m_Width, m_Height, 1.0f, 1.0f, m_Flip);
 	m_Collider->Draw();
 	//Vec2 cam = Camera::get().GetPosition();
 	//SDL_Rect box = m_Collider->Get();
@@ -48,24 +45,6 @@ void Warrior::Draw()
 
 void Warrior::Update(float dt)
 {	
-
-	//Collider* EnemyCollider = boss->GetCollider();
-	//SDL_Rect EnemyRect = boss->GetCollider()->Get();
-	//SDL_Rect* EnemyRect = EnemyCollider->Get();
-	//Collider* PlayerCollider = player->GetCollider();
-	//SDL_Rect PlayerRect = PlayerCollider->Get();
-
-	//bool CollisionCheck = (CollisionHandler::get()->CheckCollision(m_Collider->Get(), EnemyRect ));
-	//if (CollisionCheck) {
-	//	m_Transform->X = m_LastSafePosition.X;
-	//	m_Transform->Y = m_LastSafePosition.Y;
-	//}
-
-
-	//if(CollisionHandler::get()->CheckCollision(m_Collider->Get(), Enemy::GetCollider()->Get()))
-
-
-
 	m_IsRunning = false;
 	m_IsCrouching = false;
 	/*m_Animation->SetProps("player", 0, 6, 80);*/
@@ -137,10 +116,6 @@ void Warrior::Update(float dt)
 		m_Transform->X = m_LastSafePosition.X;
 	}
 
-
-
-	//if (CollisionHandler::get()->CheckCollision(m_Collider->Get(), boss->GetCollider()->Get()))
-
 	//move Y axis
 	m_RigidBody->Update(dt);
 	m_LastSafePosition.Y = m_Transform->Y;
@@ -170,6 +145,17 @@ void Warrior::Update(float dt)
 
 	AnimationState();
 	m_Animation->Update(dt);
+}
+
+void Warrior::ProcessCollision(IObject* other)
+{
+	//if (other->GetName() == "boss")
+	std::cout << "Player collided with " << other->GetName() << std::endl;
+	m_Transform->X = m_LastSafePosition.X;
+	if (other->GetName() == "viking") {
+		//m_Transform->TranslateX(-50);
+		//m_Transform->TranslateY(-50);
+	}
 }
 
 void Warrior::AnimationState()

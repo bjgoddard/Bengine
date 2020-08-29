@@ -20,12 +20,15 @@ void SeqAnimation::Update(float dt)
 
 	if (!m_Repeat && m_CurrentFrame == (m_CurrentSeq.FrameCount - 1)) {
 		m_IsEnded = true;
+		
 		m_CurrentFrame = (m_CurrentSeq.FrameCount - 1);
+		//std::cout << m_CurrentFrame << std::endl;
 	}
 }
 
 void SeqAnimation::SetCurrentSeq(std::string seqID)
 {
+
 	if (m_SeqMap.count(seqID) > 0) {
 		m_CurrentSeq = m_SeqMap[seqID];
 		m_CurrentFrame = 1;

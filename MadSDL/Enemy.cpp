@@ -11,8 +11,10 @@ Enemy::Enemy(Properties* props) : Character(props)
 	//m_Collider->SetBuffer(0, -100, 0, 0);
 
 	m_Animation = new SeqAnimation(false);
-	m_Animation->Parse("assets/animation.aml");
+	m_Animation->Parse("assets/boss_animation.aml");
 	m_Animation->SetCurrentSeq("boss_appear");
+
+	m_Name = "boss";
 }
 
 
