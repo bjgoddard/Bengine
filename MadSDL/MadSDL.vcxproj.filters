@@ -108,6 +108,9 @@
     <ClCompile Include="CollisionSystem.cpp">
       <Filter>Collision</Filter>
     </ClCompile>
+    <ClCompile Include="ObjectFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -190,7 +193,14 @@
     </ClInclude>
     <ClInclude Include="Viking.h">
       <Filter>Characters</Filter>
-
     </ClInclude>
+    <ClInclude Include="ObjectFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\Users\WizardSleevez\Pictures\Bengine.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

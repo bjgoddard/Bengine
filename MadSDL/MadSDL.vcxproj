@@ -207,6 +207,9 @@
     <ClInclude Include="Viking.h" />
     <ClInclude Include="Warrior.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\Users\WizardSleevez\Pictures\Bengine.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
