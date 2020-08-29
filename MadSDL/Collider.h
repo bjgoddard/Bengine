@@ -29,6 +29,18 @@ public:
 		SDL_RenderDrawRect(Engine::get().getRenderer(), &box);
 	}
 
+	bool CollideWithMap()
+	{
+		return CollisionHandler::get()->MapCollision(m_Box);
+	}
+
+	void Draw()
+	{
+		Vec2 cam = Camera::get().GetPosition();
+		SDL_Rect box = { (int)(m_Box.x - cam.X), (int)(m_Box.y - cam.Y), m_Box.w, m_Box.h };
+		SDL_RenderDrawRect(Engine::get().getRenderer(), &box);
+	}
+
 private:
 	SDL_Rect m_Box;
 	SDL_Rect m_Buffer;

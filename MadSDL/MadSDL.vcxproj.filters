@@ -43,6 +43,9 @@
     <Filter Include="Collision">
       <UniqueIdentifier>{ae2d9f31-bd96-44b4-b4e3-258389882d7d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Factory">
+      <UniqueIdentifier>{89bcf05d-1f98-43ed-9112-0e952330b3cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -187,6 +190,7 @@
     </ClInclude>
     <ClInclude Include="Viking.h">
       <Filter>Characters</Filter>
+
     </ClInclude>
   </ItemGroup>
 </Project>

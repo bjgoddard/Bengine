@@ -22,9 +22,9 @@ public:
 	void Parse(std::string source);
 	void SetCurrentSeq(std::string seqID);
 	void SetRepeat(bool repeat) { m_Repeat = repeat; }
+
 	void DrawFrame(float x, float y, float xScale = 1.0f, float yScale = 1.0f, float scrollRatio = 1.0f, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	Sequence m_CurrentSeq;
-	
 private:
 	std::map<std::string, Sequence> m_SeqMap;
 };

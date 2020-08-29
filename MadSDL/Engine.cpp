@@ -11,6 +11,7 @@
 #include "CollisionSystem.h"
 #include "Viking.h"
 
+
 Engine* Engine::s_instance = nullptr;
 TextureManager* TextureManager::s_Instance = nullptr;
 CollisionSystem collisionSystem;
@@ -49,6 +50,7 @@ bool Engine::Init()
     m_LevelMap = MapParser::get()->GetMap("level1");
 
     TextureManager::get().ParseTextures("assets/textures.tml");
+
   
 
     Warrior* player = new Warrior(new Properties("player", 500, 1000, 136, 96));
@@ -56,7 +58,6 @@ bool Engine::Init()
     if (viking) {
         viking->player = player;
     }
-
     m_GameObjects.push_back(player);
     m_GameObjects.push_back(viking);
 
@@ -84,13 +85,14 @@ void Engine::Render()
 {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
-
+  
     //Background images
     TextureManager::get().Draw("bg5", 0, 0, 2250, 914, 1.0f, 1.0f, 0.4f);
     TextureManager::get().Draw("bg4", 0, 0, 2250, 911, 1.0f, 1.0f, 0.5f);
     TextureManager::get().Draw("bg3", 0, 0, 2250, 1128, 1.0f, 1.0f, 0.6f);
     TextureManager::get().Draw("bg2", 0, 0, 2250, 1800, 1.0f, 1.0f, 0.7f);
     TextureManager::get().Draw("bg1", 0, 900, 2250, 591, 1.0f, 0.7f, 0.4f);
+
     m_LevelMap->Render();
 
     for (auto& obj : m_GameObjects) {

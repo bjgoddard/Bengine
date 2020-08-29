@@ -1,7 +1,10 @@
 #include "Enemy.h"
 #include "Camera.h"
 #include "CollisionHandler.h"
+#include "ObjectFactory.h"
 #include <iostream>
+
+static Registrar<Enemy> registrar("BOSS");
 
 Enemy::Enemy(Properties* props) : Character(props)
 {

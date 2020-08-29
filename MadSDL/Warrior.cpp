@@ -3,9 +3,12 @@
 #include <SDL.h>
 #include "Input.h"
 #include "Camera.h"
+#include "ObjectFactory.h"
 #include "CollisionHandler.h"
 #include "Enemy.h"
 #include "Engine.h"
+
+static Registrar<Warrior> registrar("PLAYER");
 
 Warrior::Warrior(Properties* props) : Character(props)
 {
@@ -31,7 +34,6 @@ void Warrior::Draw()
 {
 	m_Animation->Draw(m_Transform->X, m_Transform->Y, m_Width, m_Height, 1.0f, 1.0f, m_Flip);
 	/*m_Collider->Draw();*/
-
 }
 
 

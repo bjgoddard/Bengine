@@ -60,3 +60,4 @@ void SeqAnimation::Parse(std::string source)
 		}
 	}
 }
+
