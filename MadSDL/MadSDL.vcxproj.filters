@@ -200,7 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\Users\WizardSleevez\Pictures\Bengine.png">
-      <Filter>Resource Files</Filter>
+      <Filter>Source Files</Filter>
     </Image>
   </ItemGroup>
 </Project>
