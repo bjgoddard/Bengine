@@ -102,8 +102,11 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Characters</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectFactory.cpp">
-      <Filter>Factory</Filter>
+    <ClCompile Include="Viking.cpp">
+      <Filter>Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionSystem.cpp">
+      <Filter>Collision</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -120,9 +123,6 @@
       <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
-      <Filter>Object</Filter>
-    </ClInclude>
-    <ClInclude Include="IObject.h">
       <Filter>Object</Filter>
     </ClInclude>
     <ClInclude Include="Character.h">
@@ -182,8 +182,15 @@
     <ClInclude Include="Enemy.h">
       <Filter>Characters</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectFactory.h">
-      <Filter>Factory</Filter>
+    <ClInclude Include="IObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionSystem.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Viking.h">
+      <Filter>Characters</Filter>
+
     </ClInclude>
   </ItemGroup>
 </Project>

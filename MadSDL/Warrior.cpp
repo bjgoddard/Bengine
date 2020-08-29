@@ -5,6 +5,8 @@
 #include "Camera.h"
 #include "ObjectFactory.h"
 #include "CollisionHandler.h"
+#include "Enemy.h"
+#include "Engine.h"
 
 static Registrar<Warrior> registrar("PLAYER");
 
@@ -22,21 +24,16 @@ Warrior::Warrior(Properties* props) : Character(props)
 
 	m_Animation = new SpriteAnimation();
 	m_Animation->SetProps("player_idle", 0, 6, 100);
+
+	m_Name = "player";
+
+	
 }
 
 void Warrior::Draw()
 {
-	//m_RigidBody->Update(0.2);
-	//m_RigidBody->ApplyForceX(3); 
-	//m_Transform->TranslateX(m_RigidBody->Position().X);
-	//m_Transform->TranslateY(m_RigidBody->Position().Y);
-	m_Animation->Draw(m_Transform->X, m_Transform->Y, m_Width, m_Height, m_Flip);
-	m_Collider->Draw();
-	//Vec2 cam = Camera::get().GetPosition();
-	//SDL_Rect box = m_Collider->Get();
-	//box.x -= cam.X;
-	//box.y -= cam.Y;
-	//SDL_RenderDrawRect(Engine::get().getRenderer(), &box);
+	m_Animation->Draw(m_Transform->X, m_Transform->Y, m_Width, m_Height, 1.0f, 1.0f, m_Flip);
+	/*m_Collider->Draw();*/
 }
 
 
@@ -112,7 +109,7 @@ void Warrior::Update(float dt)
 	{
 		m_Transform->X = m_LastSafePosition.X;
 	}
-	
+
 	//move Y axis
 	m_RigidBody->Update(dt);
 	m_LastSafePosition.Y = m_Transform->Y;
@@ -142,6 +139,17 @@ void Warrior::Update(float dt)
 
 	AnimationState();
 	m_Animation->Update(dt);
+}
+
+void Warrior::ProcessCollision(IObject* other)
+{
+	//if (other->GetName() == "boss")
+	std::cout << "Player collided with " << other->GetName() << std::endl;
+	m_Transform->X = m_LastSafePosition.X;
+	if (other->GetName() == "viking") {
+		//m_Transform->TranslateX(-50);
+		//m_Transform->TranslateY(-50);
+	}
 }
 
 void Warrior::AnimationState()

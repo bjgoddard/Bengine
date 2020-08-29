@@ -18,6 +18,12 @@ public:
 	virtual void Draw();
 	virtual void Clean();
 	virtual void Update(float dt);
+	virtual std::string GetName() { return m_Name; }
+	virtual SDL_Rect GetCollider() {
+		return m_Collider->Get();
+	}
+	virtual void ProcessCollision(IObject* other);
+	Vec2 GetPosition() { return m_LastSafePosition; }
 
 private:
 	void AnimationState();
@@ -38,4 +44,5 @@ private:
 	RigidBody* m_RigidBody;
 	Collider* m_Collider;
 	Vec2 m_LastSafePosition;
+	std::string m_Name;
 };

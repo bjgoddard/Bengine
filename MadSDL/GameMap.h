@@ -19,7 +19,6 @@ public:
 			m_MapLayers[i]->Update();
 		}
 	}
-
 	std::vector<Layer*> GetLayers() { return m_MapLayers; }
 private:
 	friend class MapParser;

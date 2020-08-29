@@ -17,7 +17,6 @@ public:
 		TextureID = textureID;
 	}
 
-	//Transform* m_Transform;
 	int Width, Height;
 	std::string TextureID;
 	float X, Y;
@@ -36,16 +35,15 @@ public:
 		m_Origin = new Point(px, py);
 	}
 	virtual ~GameObject() {}
-
 	inline Point* GetOrigin() { return m_Origin; }
-
 	virtual void Draw() = 0;
 	virtual void Clean() = 0;
 	virtual void Update(float dt) = 0;
+	Transform* m_Transform;
 
 protected:
 	Point* m_Origin;
-	Transform* m_Transform;
+	
 	int m_Width, m_Height;
 	std::string m_TextureID;
 	SDL_RendererFlip m_Flip;

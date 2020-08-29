@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<animations>
+    <sequence id="viking_idle" frameCount="20" speed="150" width="64" height="64">
+        <frame textureID ="IdlePose02_01"/>
+        <frame textureID ="IdlePose02_02"/>
+        <frame textureID ="IdlePose02_03"/>
+        <frame textureID ="IdlePose02_04"/>
+        <frame textureID ="IdlePose02_05"/>
+        <frame textureID ="IdlePose02_06"/>
+        <frame textureID ="IdlePose02_07"/>
+        <frame textureID ="IdlePose02_08"/>
+        <frame textureID ="IdlePose02_09"/>
+        <frame textureID ="IdlePose02_10"/>
+        <frame textureID ="IdlePose02_11"/>
+        <frame textureID ="IdlePose02_12"/>
+        <frame textureID ="IdlePose02_13"/>
+        <frame textureID ="IdlePose02_14"/>
+        <frame textureID ="IdlePose02_15"/>
+        <frame textureID ="IdlePose02_16"/>
+        <frame textureID ="IdlePose02_17"/>
+        <frame textureID ="IdlePose02_18"/>
+        <frame textureID ="IdlePose02_19"/>
+        <frame textureID ="IdlePose02_20"/>
+    </sequence>
+
+    <sequence id="viking_attack" frameCount="11" speed="200" width="64" height="64">
+        <frame textureID ="Attack01_01"/>
+        <frame textureID ="Attack01_02"/>
+        <frame textureID ="Attack01_03"/>
+        <frame textureID ="Attack01_04"/>
+        <frame textureID ="Attack01_05"/>
+        <frame textureID ="Attack01_06"/>
+        <frame textureID ="Attack01_07"/>
+        <frame textureID ="Attack01_08"/>
+        <frame textureID ="Attack01_09"/>
+        <frame textureID ="Attack01_10"/>
+        <frame textureID ="Attack01_11"/>
+    </sequence>
+
+    <sequence id="viking_run" frameCount="8" speed="50" width="64" height="64">
+        <frame textureID ="RunPose01_01"/>
+        <frame textureID ="RunPose01_02"/>
+        <frame textureID ="RunPose01_03"/>
+        <frame textureID ="RunPose01_04"/>
+        <frame textureID ="RunPose01_05"/>
+        <frame textureID ="RunPose01_06"/>
+        <frame textureID ="RunPose01_07"/>
+        <frame textureID ="RunPose01_08"/>
+    </sequence>
+
+    <sequence id="viking_hit" frameCount="5" speed="100" width="64" height="64">
+        <frame textureID ="HitPose02_01"/>
+        <frame textureID ="HitPose02_02"/>
+        <frame textureID ="HitPose02_03"/>
+        <frame textureID ="HitPose02_04"/>
+        <frame textureID ="HitPose02_05"/>
+    </sequence>
+
+    <sequence id="viking_death" frameCount="17" speed="100" width="64" height="64">
+        <frame textureID ="DeathPose02_01"/>
+        <frame textureID ="DeathPose02_02"/>
+        <frame textureID ="DeathPose02_03"/>
+        <frame textureID ="DeathPose02_04"/>
+        <frame textureID ="DeathPose02_05"/>
+        <frame textureID ="DeathPose02_06"/>
+        <frame textureID ="DeathPose02_07"/>
+        <frame textureID ="DeathPose02_08"/>
+        <frame textureID ="DeathPose02_09"/>
+        <frame textureID ="DeathPose02_10"/>
+        <frame textureID ="DeathPose02_11"/>
+        <frame textureID ="DeathPose02_12"/>
+        <frame textureID ="DeathPose02_13"/>
+        <frame textureID ="DeathPose02_14"/>
+        <frame textureID ="DeathPose02_15"/>
+        <frame textureID ="DeathPose02_16"/>
+        <frame textureID ="DeathPose02_17"/>
+    </sequence>
+
+    
+</animations>

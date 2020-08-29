@@ -9,23 +9,23 @@ static Registrar<Enemy> registrar("BOSS");
 Enemy::Enemy(Properties* props) : Character(props)
 {
 	m_RigidBody = new RigidBody();
-	m_RigidBody->SetGravity(3.5);
+	m_RigidBody->SetGravity(10.0f);
 	m_Collider = new Collider();
-
 	m_Animation = new SeqAnimation(false);
-	m_Animation->Parse("assets/animation.aml");
+	m_Animation->Parse("assets/boss_animation.aml");
 	m_Animation->SetCurrentSeq("boss_appear");
+	m_Name = "boss";
 }
+
 
 void Enemy::Draw()
 {
-	m_Animation->DrawFrame(m_Transform->X, m_Transform->Y, 0.3f, 0.3f, m_Flip);
+	m_Animation->DrawFrame(m_Transform->X, m_Transform->Y, 0.3f, 0.3f, 1.0f, m_Flip);
 	m_Collider->Draw();
 }
 
 void Enemy::Update(float dt)
 {
-	//x axis
 	m_RigidBody->Update(dt);
 	m_LastSafePosition.X = m_Transform->X;
 	m_Transform->X += m_RigidBody->Position().X;
@@ -47,12 +47,15 @@ void Enemy::Update(float dt)
 	m_Animation->Update(dt);
 
 	if (m_Animation->IsEnded()) {
-		m_Animation->SetCurrentSeq("boss_appear");
-		m_Animation->SetRepeat(false);
+		m_Animation->SetCurrentSeq("boss_idle");
+		m_Animation->SetRepeat(true);
 	}
+
+	m_Origin->X = m_Transform->X + m_Width / 2;
+	m_Origin->Y = m_Transform->Y + m_Height / 2;
 }
 
 void Enemy::Clean()
 {
-
+	TextureManager::get().Drop(m_TextureID);
 }
