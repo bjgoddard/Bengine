@@ -5,7 +5,6 @@
 #include "Engine.h"
 class Camera
 {
-
 public:
 	inline static Camera& get()
 	{
@@ -23,8 +22,6 @@ private:
 	Camera() { m_Viewbox = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT }; }
 	Point* m_Target;
 	Vec2 m_Position;
-
 	SDL_Rect m_Viewbox;
 	static Camera* s_instance;
-
 };

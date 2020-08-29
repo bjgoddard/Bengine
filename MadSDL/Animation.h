@@ -13,6 +13,4 @@ public:
 	bool m_IsEnded;
 protected:
 	bool m_Repeat;
-	
-	
 };

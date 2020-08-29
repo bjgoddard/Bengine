@@ -1,9 +1,7 @@
 #include "SpriteAnimation.h"
 #include "TextureManager.h"
 SpriteAnimation::SpriteAnimation(bool repeat) : Animation(repeat)
-{
-	
-}
+{}
 
 void SpriteAnimation::Update(float dt)
 {

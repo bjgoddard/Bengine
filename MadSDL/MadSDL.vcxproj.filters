@@ -43,9 +43,6 @@
     <Filter Include="Collision">
       <UniqueIdentifier>{ae2d9f31-bd96-44b4-b4e3-258389882d7d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ECS">
-      <UniqueIdentifier>{bd181fcb-a58b-491c-bab0-aabf7685093d}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -101,12 +98,6 @@
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>Characters</Filter>
-    </ClCompile>
-    <ClCompile Include="GObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ECS.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Viking.cpp">
       <Filter>Characters</Filter>
@@ -187,21 +178,6 @@
     </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>Characters</Filter>
-    </ClInclude>
-    <ClInclude Include="ECS.h">
-      <Filter>ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="Components.h">
-      <Filter>ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="TransformComponent.h">
-      <Filter>ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteComponent.h">
-      <Filter>ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="AnimationC.h">
-      <Filter>ECS</Filter>
     </ClInclude>
     <ClInclude Include="IObject.h">
       <Filter>Object</Filter>

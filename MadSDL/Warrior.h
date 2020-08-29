@@ -18,19 +18,11 @@ public:
 	virtual void Draw();
 	virtual void Clean();
 	virtual void Update(float dt);
-
-
-	//virtual Vec2 GetPosition() { return Vec2(m_RigidBody->Position()); }
-	//virtual Vec2 GetSize();
 	virtual std::string GetName() { return m_Name; }
 	virtual SDL_Rect GetCollider() {
 		return m_Collider->Get();
 	}
-
-	//Using this function, we notify the object that it collided with something else
 	virtual void ProcessCollision(IObject* other);
-
-	//ATTEMPTING AI
 	Vec2 GetPosition() { return m_LastSafePosition; }
 
 private:
@@ -53,6 +45,4 @@ private:
 	Collider* m_Collider;
 	Vec2 m_LastSafePosition;
 	std::string m_Name;
-
-	/*SDL_Rect* Enemy_Rect;*/
 };

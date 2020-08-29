@@ -8,7 +8,6 @@ class Collider
 public:
 	inline SDL_Rect Get() { return m_Box; }
 	inline void SetBuffer(int x, int y, int w, int h) { m_Buffer = { x, y, w, h }; }
-
 	void Set(int x, int y, int w, int h)
 	{
 		m_Box = {

@@ -20,8 +20,6 @@ bool CollisionSystem::CheckCollision(SDL_Rect a, SDL_Rect b)
 
 void CollisionSystem::ProcessCollisionList()
 {
-	//for each iobject in vector
-	//if checkcollision(iobject, iobject) {call IObject::ProcessCollision(IObject& other);
 	for (int i = 0; i < m_ObjectList.size(); i++) {
 		IObject* currObj = m_ObjectList[i];
 		SDL_Rect temp = currObj->GetCollider();

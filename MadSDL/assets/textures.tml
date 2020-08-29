@@ -7,7 +7,11 @@
     <texture id="player_crouch" source="assets/Crouch.png"/>
     <texture id="player_attack" source="assets/Attack.png"/>
 
-    <texture id="bg" source="assets/images/bg_snow.png"/>
+    <texture id="bg1" source="assets/images/Background_Layer_1.png"/>
+    <texture id="bg2" source="assets/images/Background_Layer_2.png"/>
+    <texture id="bg3" source="assets/images/Background_Layer_3.png"/>
+    <texture id="bg4" source="assets/images/Background_Layer_4.png"/>
+    <texture id="bg5" source="assets/images/Background_Layer_5.png"/>
 
     <texture id="boss_idle1" source="assets/boss/idle/idle_1.png"/>
     <texture id="boss_idle2" source="assets/boss/idle/idle_2.png"/>

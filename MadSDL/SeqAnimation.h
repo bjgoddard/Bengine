@@ -26,6 +26,5 @@ public:
 	Sequence m_CurrentSeq;
 	
 private:
-	
 	std::map<std::string, Sequence> m_SeqMap;
 };

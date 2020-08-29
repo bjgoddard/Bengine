@@ -4,7 +4,6 @@
 class CollisionSystem
 {
 private:
-	//holds all objects that participate in collision
 	std::vector<IObject*> m_ObjectList;
 public:
 	void AddToCollisionList(IObject* obj);
@@ -13,5 +12,4 @@ public:
 	bool CheckCollision(SDL_Rect a, SDL_Rect b);
 
 	void ProcessCollisionList();
-	/*std::vector<IObject*> m_ObjectList;*/
 };

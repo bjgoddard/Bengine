@@ -4,7 +4,6 @@
 #include "tinyxml.h"
 bool TextureManager::Load(std::string id, std::string filename)
 {
-    //.c_str converts string to const char* (C syntax)
     SDL_Surface* surface = IMG_Load(filename.c_str());
     if (surface == nullptr)
     {

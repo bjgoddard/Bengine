@@ -23,19 +23,15 @@ public:
 
 
 	std::string GetName() { return m_Name; }
-	//Collider* GetCollider() { return m_Collider; }
 	virtual SDL_Rect GetCollider() {
 		return m_Collider->Get();
 	}
-
-	//Using this function, we notify the object that it collided with something else
 	virtual void ProcessCollision(IObject* other) { std::cout << "Viking Collision" << std::endl; }
-	
 	Warrior* player;
 	Vec2 GetPosition() { return m_LastSafePosition; }
 
 private:
-	void AnimationState(float dt);
+	void AnimationState();
 	void VikingAI(float dt);
 
 	bool m_IsJumping = false;

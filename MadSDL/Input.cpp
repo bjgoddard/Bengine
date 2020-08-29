@@ -1,7 +1,5 @@
 #include "Input.h"
 #include "Engine.h"
-
-//Init instance (cause static)
 Input* Input::s_instance = nullptr;
 
 Input::Input()
@@ -32,7 +30,6 @@ void Input::Listen()
 
 bool Input::GetKeyDown(SDL_Scancode key)
 {
-	/*return (m_KeyStates[key] == 1);*/
 	if (m_KeyStates[key] == 1) {
 		return true;
 	}
@@ -51,7 +48,6 @@ void Input::KeyDown()
 	m_KeyStates = SDL_GetKeyboardState(nullptr);
 }
 
-// return 1 or -1 according to the direction of the key pressed or 0 if nothing is pressed
 int Input::GetAxisKey(Axis axis)
 {
 	switch (axis) {

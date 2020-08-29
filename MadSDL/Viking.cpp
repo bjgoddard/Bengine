@@ -11,44 +11,35 @@
 Viking::Viking(Properties* props) : Character(props)
 {
 	m_AttackTime = VATTACK_TIME;
-
 	m_RigidBody = new RigidBody();
 	m_RigidBody->SetGravity(10.0f);
 	m_Collider = new Collider();
 	m_Collider->SetBuffer(-100, -140, 0, 0);
-
 	m_Animation = new SeqAnimation(false);
 	m_Animation->Parse("assets/viking_animation.aml");
-
-	//shouldnt do anything cause we set in state
 	m_Animation->SetCurrentSeq("viking_idle");
 	m_Animation->SetRepeat(false);
-
 	m_AttackCollider = new Collider();
 	m_AttackCollider->Set(m_Transform->X, m_Transform->Y, 50, 50);
-
 	m_Name = "viking";
 }
 
 void Viking::Draw()
 {
 	m_Animation->DrawFrame(m_Transform->X, m_Transform->Y, 4.0f, 4.0f, 1.0f, m_Flip);
-	m_Collider->Draw();
-	m_AttackCollider->Draw();
+	//m_Collider->Draw();
+	//m_AttackCollider->Draw();
 }
 
 void Viking::Update(float dt)
 {
-
-	//if (m_IsAttacking && m_AttackTime > 0) {
-	//	m_AttackTime -= dt;
-	//}
-	//else {
-	//	m_IsAttacking = false;
-	//	m_AttackTime = ATTACK_TIME;
-	//}
-
-	//move X axis
+	if (m_IsAttacking && m_AttackTime > 0) {
+		m_AttackTime -= dt;
+	}
+	else {
+		m_IsAttacking = false;
+		m_AttackTime = VATTACK_TIME;
+	}
 	m_RigidBody->Update(dt);
 	m_LastSafePosition.X = m_Transform->X;
 	m_Transform->X += m_RigidBody->Position().X;
@@ -59,8 +50,6 @@ void Viking::Update(float dt)
 	{
 		m_Transform->X = m_LastSafePosition.X;
 	}
-
-	//move Y axis
 	m_RigidBody->Update(dt);
 	m_LastSafePosition.Y = m_Transform->Y;
 	m_Transform->Y += m_RigidBody->Position().Y;
@@ -80,22 +69,58 @@ void Viking::Update(float dt)
 	m_Origin->X = m_Transform->X + m_Width / 2;
 	m_Origin->Y = m_Transform->Y + m_Height / 2;
 
-	if (m_IsAttacking && m_AttackTime > 0) {
-		m_AttackTime -= dt;
-	}
-	else {
-		m_IsAttacking = false;
-		m_AttackTime = ATTACK_TIME;
-	}
-	
 	if (player != nullptr) {
-		VikingAI(dt);
+		Vec2 playerPos = player->GetPosition();
+		Vec2 vikingPos = this->GetPosition();
+		Vec2 playerDist = playerPos - vikingPos;
+		float aggroRange = 300.0f;
+		if (std::abs(playerDist.X) < aggroRange) {
+			m_InCombat = true;
+		}
+		if (m_InCombat) {
+
+			//RIGHT ATTACK
+			if (playerDist.X > 0.0f && playerDist.X < 160.0f) {
+				m_IsAttacking = true;
+				m_Flip = SDL_FLIP_NONE;
+			}
+			//LEFT ATTACK
+			else if (playerDist.X < 0.0f && playerDist.X > -50.0f ) {
+
+				m_IsAttacking = true;
+				m_Flip = SDL_FLIP_HORIZONTAL;
+				m_AttackCollider->SetBuffer(-15, -140, 0, 0);
+			}
+			//LEFT MOVE
+			else if (playerDist.X < 0.0f && !m_IsAttacking) {
+				m_IsRunning = true;
+				m_Flip = SDL_FLIP_HORIZONTAL;
+				m_Transform->TranslateX(-0.5f);
+			}
+			//RIGHT MOVE
+			else if (playerDist.X > 0.0f ) {
+				m_IsRunning = true;
+				m_Flip = SDL_FLIP_NONE;
+				m_Transform->TranslateX(0.5f);
+			}
+		}
 	}
-	AnimationState(dt);
+	AnimationState();
 	m_Animation->Update(dt);
 }
 
-void Viking::AnimationState(float dt)
+void Viking::AnimationState()
+{
+	if (m_IsRunning) {
+		m_Animation->SetCurrentSeq("viking_run");
+	}
+
+	if (m_IsAttacking) {
+		m_Animation->SetCurrentSeq("viking_attack");
+	}
+}
+
+void Viking::VikingAI(float dt)
 {
 	if (m_IsRunning && !m_IsAttacking) {
 		m_Animation->SetCurrentSeq("viking_run");
@@ -105,19 +130,6 @@ void Viking::AnimationState(float dt)
 		m_Animation->SetCurrentSeq("viking_attack");
 	}
 
-}
-
-void Viking::VikingAI(float dt)
-{
-	//if (m_IsAttacking && m_AttackTime > 0) {
-	//	m_AttackTime -= dt;
-	//}
-	//else {
-	//	m_IsAttacking = false;
-	//	m_AttackTime = ATTACK_TIME;
-	//}
-
-	//Get player position
 	Vec2 playerPos = player->GetPosition();
 	Vec2 vikingPos = this->GetPosition();
 	Vec2 playerDist = playerPos - vikingPos;
@@ -126,11 +138,6 @@ void Viking::VikingAI(float dt)
 		m_InCombat = true;
 	}
 	if (m_InCombat) {
-		/*m_Animation->SetCurrentSeq("viking_run");*/
-		m_Animation->SetRepeat(false);
-		std::cout << m_IsAttacking << std::endl;
-
-
 		if (playerDist.X > 0.0f && playerDist.X < 160.0f && !m_IsAttacking) {
 			m_IsAttacking = true;
 			m_Flip = SDL_FLIP_NONE;
@@ -154,21 +161,11 @@ void Viking::VikingAI(float dt)
 			m_Flip = SDL_FLIP_NONE;
 			m_Transform->TranslateX(0.5f);
 		}
-
-
-		//if (m_IsAttacking && m_AttackTime > 0) {
-		//	m_AttackTime -= dt;
-		//}
-		//else {
-		//	m_IsAttacking = false;
-		//	m_AttackTime = VATTACK_TIME;
-		//}
-
-		/*m_Transform->TranslateX(-2);*/
 	}
 }
 
 void Viking::Clean()
 {
+	TextureManager::get().Drop(m_TextureID);
 }
 

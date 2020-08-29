@@ -10,7 +10,6 @@ void SeqAnimation::DrawFrame(float x, float y, float xScale, float yScale, float
 	TextureManager::get().Draw(m_CurrentSeq.TextureIDs[m_CurrentFrame], x, y, m_CurrentSeq.Width, m_CurrentSeq.Height, xScale, yScale, scrollRatio, flip);
 }
 
-
 void SeqAnimation::Update(float dt)
 {
 	if (m_Repeat || !m_IsEnded) {
@@ -22,7 +21,6 @@ void SeqAnimation::Update(float dt)
 		m_IsEnded = true;
 		
 		m_CurrentFrame = (m_CurrentSeq.FrameCount - 1);
-		//std::cout << m_CurrentFrame << std::endl;
 	}
 }
 
@@ -62,4 +60,3 @@ void SeqAnimation::Parse(std::string source)
 		}
 	}
 }
-

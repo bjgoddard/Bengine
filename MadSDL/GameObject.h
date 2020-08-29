@@ -17,7 +17,6 @@ public:
 		TextureID = textureID;
 	}
 
-	//Transform* m_Transform;
 	int Width, Height;
 	std::string TextureID;
 	float X, Y;
@@ -36,9 +35,7 @@ public:
 		m_Origin = new Point(px, py);
 	}
 	virtual ~GameObject() {}
-
 	inline Point* GetOrigin() { return m_Origin; }
-
 	virtual void Draw() = 0;
 	virtual void Clean() = 0;
 	virtual void Update(float dt) = 0;

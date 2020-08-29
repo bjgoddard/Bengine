@@ -29,17 +29,9 @@ Warrior::Warrior(Properties* props) : Character(props)
 
 void Warrior::Draw()
 {
-	//m_RigidBody->Update(0.2);
-	//m_RigidBody->ApplyForceX(3); 
-	//m_Transform->TranslateX(m_RigidBody->Position().X);
-	//m_Transform->TranslateY(m_RigidBody->Position().Y);
 	m_Animation->Draw(m_Transform->X, m_Transform->Y, m_Width, m_Height, 1.0f, 1.0f, m_Flip);
-	m_Collider->Draw();
-	//Vec2 cam = Camera::get().GetPosition();
-	//SDL_Rect box = m_Collider->Get();
-	//box.x -= cam.X;
-	//box.y -= cam.Y;
-	//SDL_RenderDrawRect(Engine::get().getRenderer(), &box);
+	/*m_Collider->Draw();*/
+
 }
 
 
