@@ -1,9 +1,8 @@
 # Description
 This is a lightweight, prototypical game engine that enables game construction by parsing textures, animations and tilemaps through TinyXML onto a display created by SDL.
 
-<p align="center">
-<img src="./Bengine.png" alt="Picture" width="500" height="400" />
-</p>
+![Bengine](https://user-images.githubusercontent.com/56774222/91646710-00f5c980-ea07-11ea-91e6-a4437476800e.png)
+
 
 # Approach
 After exposure to modern game engines and C++, the goal with Bengine is to solidify C++ principals and deepen my understanding of the purpose fulfilled by engines such as Unity and Unreal.
@@ -24,4 +23,3 @@ TinyXML
 Tiled
 
 As of August 29th 2020, the first version of Bengine is ready for use.
-
